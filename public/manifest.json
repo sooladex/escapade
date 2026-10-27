@@ -1,0 +1,14 @@
+{
+  "name": "Escapade — planifie ta sortie",
+  "short_name": "Escapade",
+  "description": "Planifie ta sortie ou ton voyage selon ta localisation et ton budget.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#04202f",
+  "theme_color": "#04202f",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
