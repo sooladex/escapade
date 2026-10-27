@@ -1,0 +1,42 @@
+:root {
+  --cyan: #22D3EE; --cyan-bright: #67E8F9; --teal: #2DD4BF;
+  --aqua-tint: rgba(34,211,238,0.12);
+  --ink: #EAF7FB; --muted: #9FC5D6; --faint: #6E9BB0;
+  --line: rgba(103,232,249,0.16);
+  --surface: rgba(14,74,110,0.55); --surface-2: rgba(10,61,92,0.7);
+  --tiktok: #FE2C55; --ok: #34D399; --gold: #FBBF24;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; }
+body { font-family: "Inter", system-ui, -apple-system, sans-serif; background: #04202f; color: var(--ink); overscroll-behavior: none; }
+#root { min-height: 100vh; min-height: 100dvh; }
+button { font-family: inherit; }
+input { font-family: inherit; }
+::-webkit-scrollbar { width: 0; height: 0; }
+.serif { font-family: "Fraunces", Georgia, serif; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes spinGlobe { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+@keyframes pulseGlow { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.06); } }
+@keyframes popIn { 0% { opacity: 0; transform: translateY(16px) scale(0.97); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+.fade-up { animation: fadeUp 0.5s cubic-bezier(0.2,0.8,0.2,1) both; }
+.pop-in { animation: popIn 0.55s cubic-bezier(0.2,0.9,0.25,1) both; }
+.globe-scene { perspective: 600px; }
+.globe { position: relative; border-radius: 50%; transform-style: preserve-3d; animation: spinGlobe 14s linear infinite; background: radial-gradient(circle at 32% 28%, var(--cyan-bright), var(--cyan) 32%, #0E7490 62%, #06384a 100%); box-shadow: inset -8px -10px 24px rgba(0,0,0,0.55), inset 6px 8px 20px rgba(103,232,249,0.5), 0 0 40px rgba(34,211,238,0.45); }
+.globe .meridian { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(230,255,255,0.18); transform-style: preserve-3d; }
+.globe-glow { position: absolute; inset: -18%; border-radius: 50%; background: radial-gradient(circle, rgba(34,211,238,0.35), transparent 62%); animation: pulseGlow 3.2s ease-in-out infinite; z-index: -1; }
+.glass { background: var(--surface); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line); }
+input[type=range] { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 6px; background: linear-gradient(90deg, var(--cyan), var(--teal)); outline: none; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 50%; background: #EAF7FB; border: 3px solid var(--cyan); cursor: pointer; box-shadow: 0 0 14px rgba(34,211,238,0.7); }
+input[type=range]::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: #EAF7FB; border: 3px solid var(--cyan); cursor: pointer; }
+@keyframes auroraShift { 0% { transform: translate(-4%, -2%) rotate(0deg) scale(1.1); opacity: 0.55; } 50% { transform: translate(4%, 3%) rotate(8deg) scale(1.25); opacity: 0.8; } 100% { transform: translate(-4%, -2%) rotate(0deg) scale(1.1); opacity: 0.55; } }
+@keyframes drift { 0% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-24px) translateX(14px); } 100% { transform: translateY(0) translateX(0); } }
+@keyframes twinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.9; } }
+.bg-layer { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.aurora { position: absolute; width: 90vw; height: 90vw; max-width: 720px; max-height: 720px; border-radius: 50%; filter: blur(70px); mix-blend-mode: screen; }
+.aurora.a1 { top: -22%; left: -18%; background: radial-gradient(circle, rgba(34,211,238,0.5), transparent 62%); animation: auroraShift 16s ease-in-out infinite; }
+.aurora.a2 { bottom: -26%; right: -20%; background: radial-gradient(circle, rgba(45,212,191,0.42), transparent 60%); animation: auroraShift 20s ease-in-out infinite reverse; }
+.aurora.a3 { top: 30%; right: -24%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(56,189,248,0.34), transparent 60%); animation: drift 22s ease-in-out infinite; }
+.aurora.a4 { bottom: 8%; left: -20%; width: 55vw; height: 55vw; background: radial-gradient(circle, rgba(103,232,249,0.22), transparent 62%); animation: drift 26s ease-in-out infinite reverse; }
+.star { position: absolute; border-radius: 50%; background: #CFF6FF; animation: twinkle ease-in-out infinite; }
+.vignette { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(120% 90% at 50% 0%, transparent 40%, rgba(2,15,24,0.55) 100%); }
